@@ -1,0 +1,28 @@
+[
+
+      {
+        "id": 1,
+        "name": "John",
+        "age": 35,
+        "active": "true"
+      },
+      {
+        "id": 2,
+        "name": "Jane",
+        "age": 29,
+        "active": "true"
+      },
+      {
+        "id": 3,
+        "name": "Anny",
+        "age": 24,
+        "active": "true"
+      },
+      {
+        "id": 4,
+        "name": "Adam",
+        "age": 45,
+        "active": "true"
+      }
+]
+  

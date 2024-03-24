@@ -1,0 +1,28 @@
+ [
+      {
+        "id": 1,
+        "color": "Red",
+        "quantity": 10,
+        "status": "available"
+      },
+      {
+        "id": 2,
+        "color": "Blue",
+        "quantity": 5,
+        "status": "available"
+      },
+      {
+        "id": 3,
+        "color": "Green",
+        "quantity": 0,
+        "status": "not available"
+      },
+      {
+        "id": 4,
+        "color": "Yellow",
+        "quantity": 3,
+        "status": "available"
+      }
+    ]
+
+  
