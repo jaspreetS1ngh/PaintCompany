@@ -12,6 +12,17 @@ router.get('/inventory', async (req, res) => {
       res.status(500).json('Error fetching inventory data.');
     }
   });
+  router.get('/inventory/:id', async (req, res) => {
+    const {id}= req.params;
+    try {
+      const inventoryById = await controllers.getInventoryDataById(id);
+      
+      res.status(200).json(inventoryById);
+    } catch (error) {
+      console.error(`Error fetching inventory data By Id: ${error}`);
+      res.status(500).json('Error fetching inventory data By Id.');
+    }
+  });
   router.get('/staff', async (req, res) => {
     try {
       const stockData = await controllers.getStaffData();

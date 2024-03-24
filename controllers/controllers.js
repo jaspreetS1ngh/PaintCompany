@@ -16,6 +16,19 @@ const getInventoryData =()=>{
 
     }
 }
+const getInventoryDataById=(Id)=>{
+    try{
+        const InventoryData= getInventoryData();
+     //   console.log(InventoryData);
+    const Item= InventoryData.find(Item => Item.id===parseInt(Id));
+   // console.log(Item);
+    return Item;
+        }catch(e){
+            console.error(" Error while reading Inventory data by Id : $(e)" );
+        return null;
+        }
+
+}
 const getStaffData =()=>{
     try{
         
@@ -31,5 +44,6 @@ const getStaffData =()=>{
 
 module.exports = {
     getInventoryData,
-    getStaffData
+    getStaffData,
+    getInventoryDataById
   };
