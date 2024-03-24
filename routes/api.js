@@ -13,8 +13,9 @@ router.get('/inventory', async (req, res) => {
     }
   });
   router.get('/inventory/:id', async (req, res) => {
-    const {id}= req.params;
+    
     try {
+      const {id}= req.params;
       const inventoryById = await controllers.getInventoryDataById(id);
       
       res.status(200).json(inventoryById);
@@ -23,15 +24,12 @@ router.get('/inventory', async (req, res) => {
       res.status(500).json('Error fetching inventory data By Id.');
     }
   });
-  router.patch('/inventory/:id', async (req, res) => {
-    
-
+  router.put('/inventory/:id', async (req, res) => {
     try {
-      console.log(req.body);
-      const { id } = req.params;
-    const inventoryDetails = req.body;
-        controllers.updateInventoryItem(id, inventoryDetails);
-        res.status(200);
+        const { id } = req.params;
+        const inventoryDetails = req.body;
+        await controllers.updateInventoryItem(id, inventoryDetails);
+        res.status(200).json({ message: 'Inventory item updated successfully' });
     } catch (error) {
         console.error(`Error updating inventory item by ID: ${error}`);
         res.status(500).json('Error updating inventory item by ID.');
@@ -57,6 +55,18 @@ router.get('/inventory', async (req, res) => {
       res.status(500).json('Error fetching stock data.');
     }
   });
+
+  router.put('/staff/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const staffDetails = req.body;
+        await controllers.updateStaffItem(id, staffDetails);
+        res.status(200).json({ message: 'Staff info updated successfully' });
+    } catch (error) {
+        console.error(`Error updating inventory item by ID: ${error}`);
+        res.status(500).json('Error updating inventory item by ID.');
+    }
+});
   
   
 

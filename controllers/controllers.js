@@ -38,11 +38,12 @@ const updateInventoryItem = (id, details) => {
             }
             return item;
         });
+
         saveInventoryData(updatedInventory);
-        return updatedInventory.find(item => item.id === parseInt(id));
+       // return updatedInventory.find(item => item.id === parseInt(id));
     } catch (error) {
         console.error(`Error updating inventory item by ID: ${error}`);
-        throw error;
+       // throw error;
     }
 };
 
@@ -85,6 +86,33 @@ const getStaffDataById=(Id)=>{
 
 }
 
+const saveStaffData = (staffData) => {
+    try {
+        fs.writeFileSync(staffDataPath, JSON.stringify(staffData, null, 1));
+    } catch (error) {
+        console.error(`Error saving staff data: ${error}`);
+        throw error;
+    }
+};
+
+const updateStaffItem = (id, details) => {
+    try {
+        const staffData = getStaffData();
+        const updatedStaff = staffData.map(item => {
+            if (item.id === parseInt(id)) {
+                return { ...item, ...details };
+            }
+            return item;
+        });
+        
+        saveStaffData(updatedStaff);
+       // return updatedInventory.find(item => item.id === parseInt(id));
+    } catch (error) {
+        console.error(`Error updating staff item by ID: ${error}`);
+       // throw error;
+    }
+};
+
 
 
 
@@ -93,5 +121,6 @@ module.exports = {
     getStaffData,
     getInventoryDataById,
     getStaffDataById,
-    updateInventoryItem
+    updateInventoryItem,
+    updateStaffItem
   };
