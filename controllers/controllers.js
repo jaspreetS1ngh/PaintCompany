@@ -1,14 +1,17 @@
+const { Console } = require('console');
 const fs = require('fs');
 const path = require('path');
+//const {v4: uuidv4 }= require("uuid");
 
 const inventoryDataPath = path.join(__dirname, '..', 'models','inventory.json');
 
 const staffDataPath = path.join(__dirname, '..', 'models','staff.json');
+const staffData=JSON.parse(fs.readFileSync(inventoryDataPath));
 
 const getInventoryData =()=>{
     try{
         
-        return JSON.parse(fs.readFileSync(inventoryDataPath));
+        return staffData;
 
     }catch(e){
         console.error(" Error while reading Inventory data : $(e)" );
@@ -16,6 +19,33 @@ const getInventoryData =()=>{
 
     }
 }
+
+const saveInventoryData = (inventoryData) => {
+    try {
+        fs.writeFileSync(inventoryDataPath, JSON.stringify(inventoryData, null, 1));
+    } catch (error) {
+        console.error(`Error saving inventory data: ${error}`);
+        throw error;
+    }
+};
+
+const updateInventoryItem = (id, details) => {
+    try {
+        const inventoryData = getInventoryData();
+        const updatedInventory = inventoryData.map(item => {
+            if (item.id === parseInt(id)) {
+                return { ...item, ...details };
+            }
+            return item;
+        });
+        saveInventoryData(updatedInventory);
+        return updatedInventory.find(item => item.id === parseInt(id));
+    } catch (error) {
+        console.error(`Error updating inventory item by ID: ${error}`);
+        throw error;
+    }
+};
+
 const getInventoryDataById=(Id)=>{
     try{
         const InventoryData= getInventoryData();
@@ -29,6 +59,7 @@ const getInventoryDataById=(Id)=>{
         }
 
 }
+
 const getStaffData =()=>{
     try{
         
@@ -40,10 +71,27 @@ const getStaffData =()=>{
 
     }
 }
+const getStaffDataById=(Id)=>{
+    try{
+        const StaffData= getStaffData();
+    
+    const Item= StaffData.find(Item => Item.id===parseInt(Id));
+ 
+    return Item;
+        }catch(e){
+            console.error(" Error while reading Staff data by Id : {$(e)}" );
+        return null;
+        }
+
+}
+
+
 
 
 module.exports = {
     getInventoryData,
     getStaffData,
-    getInventoryDataById
+    getInventoryDataById,
+    getStaffDataById,
+    updateInventoryItem
   };
