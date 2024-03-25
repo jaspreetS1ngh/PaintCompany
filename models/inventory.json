@@ -1,28 +1,27 @@
 [
-    {
-      "color": "blue",
-      "quantity": 10,
-      "status": "available"
-    },
-    {
-      "color": "grey",
-      "quantity": 5,
-      "status": "available"
-    },
-    {
-      "color": "black",
-      "quantity": 8,
-      "status": "out of stock"
-    },
-    {
-      "color": "white",
-      "quantity": 15,
-      "status": "available"
-    },
-    {
-      "color": "purple",
-      "quantity": 3,
-      "status": "available"
-    }
-  ]
-  
+ {
+  "color": "blue",
+  "quantity": 10,
+  "status": "available"
+ },
+ {
+  "color": "grey",
+  "quantity": 5,
+  "status": "available"
+ },
+ {
+  "color": "black",
+  "quantity": 8,
+  "status": "out of stock"
+ },
+ {
+  "color": "white",
+  "quantity": 15,
+  "status": "available"
+ },
+ {
+  "color": "purple",
+  "quantity": 3,
+  "status": "available"
+ }
+]
