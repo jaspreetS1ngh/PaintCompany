@@ -1,12 +1,14 @@
 const { Console } = require('console');
 const fs = require('fs');
 const path = require('path');
-//const {v4: uuidv4 }= require("uuid");
+require('dotenv').config();
+
+
 
 const inventoryDataPath = path.join(__dirname, '..', 'models','inventory.json');
 
 const staffDataPath = path.join(__dirname, '..', 'models','staff.json');
-const staffData=JSON.parse(fs.readFileSync(inventoryDataPath));
+const staffData=JSON.parse(fs.readFileSync(staffDataPath));
 
 const getInventoryData =()=>{
     try{
