@@ -1,10 +1,12 @@
 const express = require('express');
 const controllers = require("../controllers/controllers");
 require('dotenv').config();
-
+const { authentication } = require('../middlewares/middleware');
 const router = express.Router();
+router.use(authentication);
 
 router.get('/inventory', async (req, res) => {
+  console.log(req.user);
     try {
       const inventoryData = await controllers.getInventoryData();
       res.status(200).json(inventoryData);
@@ -26,6 +28,14 @@ router.get('/inventory', async (req, res) => {
     }
   });
   router.put('/inventory/:id', async (req, res) => {
+    const userRole = req.user.role;
+
+    console.log(userRole);
+
+        // Check if user has permission to access the PUT API
+        if (userRole == "viewer") {
+            return res.status(403).json({ message: 'Forbidden: You do not have permission to access this resource.' });
+        }
     try {
         const { id } = req.params;
         const inventoryDetails = req.body;
@@ -37,6 +47,12 @@ router.get('/inventory', async (req, res) => {
     }
 });
   router.get('/staff/:id', async (req, res) => {
+    const userRole = req.user.role;
+
+    console.log(userRole);
+    if (userRole !== "admin") {
+      return res.status(403).json({ message: 'Forbidden: You do not have permission to access this resource.' });
+  }
     const {id}= req.params;
     try {
       const staffById = await controllers.getStaffDataById(id);
@@ -48,6 +64,12 @@ router.get('/inventory', async (req, res) => {
     }
   });
   router.get('/staff', async (req, res) => {
+    const userRole = req.user.role;
+
+    console.log(userRole);
+    if (userRole !== "admin") {
+      return res.status(403).json({ message: 'Forbidden: You do not have permission to access this resource.' });
+  }
     try {
       const stockData = await controllers.getStaffData();
       res.status(200).json(stockData);
@@ -58,6 +80,12 @@ router.get('/inventory', async (req, res) => {
   });
 
   router.put('/staff/:id', async (req, res) => {
+    const userRole = req.user.role;
+
+    console.log(userRole);
+    if (userRole !== "admin") {
+      return res.status(403).json({ message: 'Forbidden: You do not have permission to access this resource.' });
+  }
     try {
         const { id } = req.params;
         const staffDetails = req.body;

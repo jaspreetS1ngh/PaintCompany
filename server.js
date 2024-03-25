@@ -34,9 +34,13 @@ app.post('/login', (req, res) => {
   if (!user) {
     return res.status(401).json({ message: 'Invalid username or password' });
   }
+  const tokenPayload = {
+    username: username,
+    role: user.role // Assuming the user object has a 'role' property
+  };
 
-  
-  const token = jwt.sign({ username: username }, SECRET_TOKEN);
+  // Sign the token with the user role included in the payload
+  const token = jwt.sign(tokenPayload, SECRET_TOKEN);
 
   res.json({ token });
 });

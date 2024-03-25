@@ -3,22 +3,32 @@
   "id": 1,
   "name": "John",
   "age": 35,
-  "username": "jas",
-  "password":"1234"
+  "username": "jas1",
+  "password":"1234",
+  "role":"viewer"
  },
  {
   "id": 2,
   "name": "Jane",
-  "age": 39
+  "age": 39,
+  "username": "jas2",
+  "password":"1234",
+  "role":"painter"
  },
  {
   "id": 3,
   "name": "Anny",
-  "age": 24
+  "age": 24,
+  "username": "jas3",
+  "password":"1234",
+  "role":"painter"
  },
  {
   "id": 4,
   "name": "Adam",
-  "age": 45
+  "age": 45,
+  "username": "jas4",
+  "password":"1234",
+  "role":"admin"
  }
 ]

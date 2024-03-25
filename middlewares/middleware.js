@@ -2,13 +2,13 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 function authentication(req, res, next) {
-    const {authHeader} = req.headers;
+    const {authorization} = req.headers;
 
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    if (!authorization || !authorization.startsWith('Bearer ')) {
         return res.status(401).json({ message: 'Unauthorized/ token missing or invalid' });
     }
 
-    const token = authHeader.split(' ')[1]; 
+    const token = authorization.split(' ')[1]; 
 
    
     jwt.verify(token, process.env.SECRET_TOKEN, (err, user) => {
@@ -20,4 +20,4 @@ function authentication(req, res, next) {
     });
 }
 
-module.exports = authentication;
+module.exports = {authentication};
