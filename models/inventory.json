@@ -1,37 +1,28 @@
 [
- {
-  "id": 1,
-  "name": "John",
-  "age": 35,
-  "username": "jas1",
-  "password": "1234",
-  "role": "viewer"
- },
- {
-  "id": 2,
-  "name": "Jane",
-  "age": 39,
-  "username": "jas2",
-  "password": "1234",
-  "role": "admin",
-  "color": "Blue",
-  "quantity": 8,
-  "status": "available"
- },
- {
-  "id": 3,
-  "name": "Anny",
-  "age": 24,
-  "username": "jas3",
-  "password": "1234",
-  "role": "painter"
- },
- {
-  "id": 4,
-  "name": "Adam",
-  "age": 45,
-  "username": "jas4",
-  "password": "1234",
-  "role": "admin"
- }
-]
+    {
+      "color": "blue",
+      "quantity": 10,
+      "status": "available"
+    },
+    {
+      "color": "grey",
+      "quantity": 5,
+      "status": "available"
+    },
+    {
+      "color": "black",
+      "quantity": 8,
+      "status": "out of stock"
+    },
+    {
+      "color": "white",
+      "quantity": 15,
+      "status": "available"
+    },
+    {
+      "color": "purple",
+      "quantity": 3,
+      "status": "available"
+    }
+  ]
+  

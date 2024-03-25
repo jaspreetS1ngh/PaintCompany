@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const api=require('./routes/api');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3030;
 const {authorize}= require('./middlewares/middleware')
 
 const fs = require('fs');
