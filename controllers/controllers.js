@@ -9,11 +9,12 @@ const inventoryDataPath = path.join(__dirname, '..', 'models','inventory.json');
 
 const staffDataPath = path.join(__dirname, '..', 'models','staff.json');
 const staffData=JSON.parse(fs.readFileSync(staffDataPath));
+const InventoryData=JSON.parse(fs.readFileSync(inventoryDataPath));
 
 const getInventoryData =()=>{
     try{
         
-        return staffData;
+        return InventoryData;
 
     }catch(e){
         console.error(" Error while reading Inventory data : $(e)" );

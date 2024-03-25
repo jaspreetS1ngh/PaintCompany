@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const api=require('./routes/api');
+const cors = require('cors');
 const PORT = process.env.PORT || 3030;
 const {authorize}= require('./middlewares/middleware')
 
@@ -8,7 +9,7 @@ const fs = require('fs');
 const path = require('path');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-
+app.use(cors());
 
 const inventoryDataPath = path.join(__dirname, '.', 'models','inventory.json');
 
