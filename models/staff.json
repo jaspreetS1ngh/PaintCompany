@@ -2,7 +2,9 @@
  {
   "id": 1,
   "name": "John",
-  "age": 35
+  "age": 35,
+  "username": "jas",
+  "password":"1234"
  },
  {
   "id": 2,
